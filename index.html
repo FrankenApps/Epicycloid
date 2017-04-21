@@ -27,7 +27,8 @@
       <div id="menuWrapper" class="menu">
         <h2 style="display: inline; margin-bottom: 15px; text-decoration: underline">Settings:</h2><br />
         <label for="time">Speed: </label><input id="time" type="text" data-slider-min="0" data-slider-scale="linear" data-slider-max="15" data-slider-step=".1" data-slider-value="1"/>
-        <label for="radius">Radius: </label><input id="radius" type="text" data-slider-min="10" data-slider-scale="linear" data-slider-max="500" data-slider-step=".1" data-slider-value="50"/>
+        <label for="radius">Radius: </label><input id="radius" type="text" data-slider-min="10" data-slider-scale="linear" data-slider-max="500" data-slider-step=".1" data-slider-value="50"/><input id="radius_text" value="50" title="50" style="width: 30px; margin-left:9px; display: inline" type="text" />
+        <label for="offset" title="When you set the offset to a value not equal to zero, the created curve is called epitrochoid.">Offset: </label><input id="offset" title="When you set the offset to a value not equal to zero, the created curve is called epitrochoid." type="text" data-slider-min="0" data-slider-scale="linear" data-slider-max="500" data-slider-step=".1" data-slider-value="0"/><input id="offset_text" value="0" title="0" style="width: 30px; margin-left:9px; display: inline" type="text" />
         <button type="button" id="stop" class="btn btn-danger" style="display: inline; margin-top: 10px; margin-bottom: 10px">Stop</button>
         <button type="button" id="play" class="btn btn-success" style="display: inline; margin-top: 10px; margin-bottom: 10px">Play</button>
         <button type="button" id="removeTrace" class="btn btn-warning" onclick="removeTrace()" style="display: inline; margin-top: 10px; margin-bottom: 10px">Remove Traces</button>

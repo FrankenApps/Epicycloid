@@ -43,10 +43,45 @@ $( document ).ready(function() {
 $("#radius").bootstrapSlider();
 $("#radius").on("slide", function(slideEvt) {
 outerRadius = slideEvt.value;
+$('#radius_text').val(slideEvt.value);
 mover4.attr("y1", height/2-innerRadius-outerRadius);
 mover3.attr('cy', height/2-innerRadius-outerRadius*2).attr('r', outerRadius/10);
 mover2.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius/10);
 mover1.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius);
+});
+
+$('#radius_text').on('input propertychange paste', function() {
+  if (parseFloat($('#radius_text').val())>=10 && parseFloat($('#radius_text').val())<=500) {
+    outerRadius = parseFloat($('#radius_text').val());
+    $('#radius').bootstrapSlider('setValue', outerRadius);
+    $('#radius_text').attr('title', outerRadius);
+    mover4.attr("y1", height/2-innerRadius-outerRadius);
+    mover3.attr('cy', height/2-innerRadius-outerRadius*2).attr('r', outerRadius/10);
+    mover2.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius/10);
+    mover1.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius);
+  }
+});
+
+$("#offset").bootstrapSlider();
+$("#offset").on("slide", function(slideEvt) {
+offset = slideEvt.value;
+$('#offset_text').val(slideEvt.value);
+mover4.attr("y1", height/2-innerRadius-outerRadius);
+mover3.attr('cy', height/2-innerRadius-outerRadius*2).attr('r', outerRadius/10);
+mover2.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius/10);
+mover1.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius);
+});
+
+$('#offset_text').on('input propertychange paste', function() {
+  if (parseFloat($('#offset_text').val())>=0 && parseFloat($('#offset_text').val())<=500) {
+    offset = parseFloat($('#offset_text').val());
+    $('#offset').bootstrapSlider('setValue', offset);
+    $('#offset_text').attr('title', offset);
+    mover4.attr("y1", height/2-innerRadius-outerRadius);
+    mover3.attr('cy', height/2-innerRadius-outerRadius*2).attr('r', outerRadius/10);
+    mover2.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius/10);
+    mover1.attr('cy', height/2-innerRadius-outerRadius).attr('r', outerRadius);
+  }
 });
 
 $('#stop').click(function() {
@@ -134,11 +169,11 @@ function controller(){
 
   mover1.attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)+height/2);
   mover2.attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)+height/2);
-  mover3.attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*outerRadius+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*outerRadius+height/2);
-  mover4.attr('x1', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+width/2).attr('y1', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)+height/2).attr('x2', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*outerRadius+width/2).attr('y2', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*outerRadius+height/2);
+  mover3.attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*(outerRadius-offset)+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*(outerRadius-offset)+height/2);
+  mover4.attr('x1', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+width/2).attr('y1', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)+height/2).attr('x2', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*(outerRadius-offset)+width/2).attr('y2', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*(outerRadius-offset)+height/2);
 
   if($('#trace').is(":checked")){
-    layer0.append('circle').attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*outerRadius+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*outerRadius+height/2).attr('r', outerRadius/25).style('fill', '#FF0000').attr('class', 'trace');
+    layer0.append('circle').attr('cx', Math.sin(toRadians(circ_movement))*(innerRadius+outerRadius)+Math.sin(toRadians(rotation))*(outerRadius-offset)+width/2).attr('cy', -Math.cos(toRadians(circ_movement))*(innerRadius+outerRadius)-Math.cos(toRadians(rotation))*(outerRadius-offset)+height/2).attr('r', outerRadius/25).style('fill', '#FF0000').attr('class', 'trace');
   }
   if($('#trace_only').is(":checked")){
     $('.visual').hide('400', function() {
