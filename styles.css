@@ -1,0 +1,21 @@
+html, body{
+  background-color: #ffffff;
+}
+
+
+.menu {
+	position:fixed;
+	width:250px; height:400px;
+	top:60px; right: 10px;
+	background:none;
+}
+
+.menu a {
+	color: black;
+}
+
+.scale {
+	position:fixed;
+	width:110px; height:60px;
+	bottom:20px; right: 60px;
+}

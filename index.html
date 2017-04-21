@@ -1,0 +1,38 @@
+<!DOCTYPE HTML5 PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Epicycloid</title>
+
+        <!-- jquery -->
+        <script src="libs/jquery/jquery-2.2.3.min.js"></script>
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-theme.min.css">
+        <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.1/bootstrap-slider.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.1/css/bootstrap-slider.min.css" />
+        <!-- D3.js -->
+        <script src="libs/d3/d3.js"></script>
+        <!-- Switchery -->
+        <script src="libs/switchery/switchery.min.js"></script>
+        <link rel="stylesheet" href="libs/switchery/switchery.min.css">
+
+        <script src="script.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+      <div id="menuWrapper" class="menu">
+        <h2 style="display: inline; margin-bottom: 15px; text-decoration: underline">Settings:</h2><br />
+        <label for="time">Speed: </label><input id="time" type="text" data-slider-min="0" data-slider-scale="linear" data-slider-max="15" data-slider-step=".1" data-slider-value="1"/>
+        <label for="radius">Radius: </label><input id="radius" type="text" data-slider-min="10" data-slider-scale="linear" data-slider-max="500" data-slider-step=".1" data-slider-value="50"/>
+        <button type="button" id="stop" class="btn btn-danger" style="display: inline; margin-top: 10px; margin-bottom: 10px">Stop</button>
+        <button type="button" id="play" class="btn btn-success" style="display: inline; margin-top: 10px; margin-bottom: 10px">Play</button>
+        <button type="button" id="removeTrace" class="btn btn-warning" onclick="removeTrace()" style="display: inline; margin-top: 10px; margin-bottom: 10px">Remove Traces</button>
+        <label for="trace" style="display: inline">Trace: </label><input type="checkbox" class="js-switch" checked id="trace" />
+        <label for="trace_only" style="display: inline">Hide Circles: </label><input type="checkbox" class="js-switch" unchecked id="trace_only" />
+      </div>
+    </body>
+</html>
