@@ -8,3 +8,4 @@ You can set an offset to move the tracked point closer or more far away from the
 ## TODO
 
 1. Make the controls more mobile friendly.
+2. Allow for Hypotrochoids, too.
