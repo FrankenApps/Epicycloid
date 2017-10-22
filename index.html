@@ -24,6 +24,35 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
+      <!-- File Dialog Modal -->
+<div class="modal fade" id="fileDialog" role="dialog">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title" style="text-align: center">Name your MindMap</h4>
+    </div>
+    <div class="modal-body">
+      <label for="nameOfMindMap">Enter File Name:</label>
+      <input type="text" class="form-control" id="nameOfSVG" />
+      <p>
+        I recommend using <em>Inkscape</em> for opening the downloaded .svg File. You will propably need to zoom out pretty far in order to see
+        the content. From Inkscape you can for example select the drawn path and export it into a .png File. If you like to you can upload your
+        drawing as a .png to my <a href="https://github.com/FrankenApps/Epicycloid/tree/gh-pages/img/drawnPaths">Github Repo</a>.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" id="closeFileDialog">Close</button>
+      <button type="button" class="btn btn-info" id="saveSVGbutton" onclick="downloadSVG()">Download</button>
+    </div>
+  </div>
+</div>
+</div>
+      <div class="svgWrapper" id="svgContainer">
+
+      </div>
       <div id="menuWrapper" class="menu">
         <h2 style="display: inline; margin-bottom: 15px; text-decoration: underline">Settings:</h2><br />
         <label for="time">Speed: </label><input id="time" type="text" data-slider-min="0" data-slider-scale="linear" data-slider-max="15" data-slider-step=".1" data-slider-value="1"/>
@@ -34,6 +63,8 @@
         <button type="button" id="removeTrace" class="btn btn-warning" onclick="removeTrace()" style="display: inline; margin-top: 10px; margin-bottom: 10px">Remove Traces</button>
         <label for="trace" style="display: inline">Trace: </label><input type="checkbox" class="js-switch" checked id="trace" />
         <label for="trace_only" style="display: inline">Hide Circles: </label><input type="checkbox" class="js-switch" unchecked id="trace_only" />
+        <button class="btn btn-primary" style="display: inline; margin-top: 10px; margin-bottom: 10px" data-toggle="modal" data-target="#fileDialog">Download .svg</button>
       </div>
+      <a download="Unnamed Mindmap.svg" id="downloadSVGFile" href="data:application/octet-stream,none" style="display: none">Click here</a>
     </body>
 </html>

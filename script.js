@@ -97,7 +97,7 @@ $('#play').click(function() {
   speed=play;
 });
 
-  svg = d3.select("body")
+  svg = d3.select(".svgWrapper")
             .append("svg")
             .attr("width", '100%')
             .attr("height", '100%')
@@ -154,8 +154,6 @@ $('#play').click(function() {
             .attr('class', 'visual')
             .attr("stroke", "#FF7F50");
 
-
-
     animation = setInterval(controller, 10);  //start controller
 });
 
@@ -188,4 +186,40 @@ function controller(){
 
 function removeTrace() {
     $('.trace').remove();
+}
+
+function downloadSVG (){
+  //get the name of the file
+  if ($('#nameOfSVG').val().length > 0) {
+    $('#downloadSVGFile').attr('download', $('#nameOfSVG').val()+'.svg');
+
+    //SVG download logic starts here
+    //experimental line breaks
+    var stringArray = document.getElementById('svgContainer').innerHTML.split('>');
+    var svgFile = '';
+
+    for (var i = 0; i < stringArray.length; i++) {
+      svgFile += stringArray[i] + '>' + '\n';
+    }
+
+    svgFile = svgFile.substring(0, svgFile.length-2);
+
+    data = [];
+    data.push(svgFile);
+    properties = {type: 'plain/text'}; // Specify the file's mime-type.
+    try {
+      // Specify the filename using the File constructor, but ...
+      file = new File(data, "MindMap.svg", properties);
+    } catch (e) {
+      // ... fall back to the Blob constructor if that isn't supported.
+      file = new Blob(data, properties);
+    }
+    url = URL.createObjectURL(file);
+    document.getElementById('downloadSVGFile').href = url;
+    $('#downloadSVGFile')[0].click(); //strangely $('#downloadSVGFile').trigger('click'); is not working
+    $('#nameOfSVG').css('background-color', '#ffffff');
+    $('#fileDialog').modal('toggle');
+  } else {
+    $('#nameOfSVG').css('background-color', '#ff0000');
+  }
 }
